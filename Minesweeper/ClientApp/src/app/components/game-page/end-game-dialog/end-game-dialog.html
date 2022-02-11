@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>You Win!</h1>
+<div mat-dialog-content>
+  <p>Your score: 56414</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Your name</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+</div>

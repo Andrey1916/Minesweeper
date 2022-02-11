@@ -1,0 +1,40 @@
+<h1>Best results</h1>
+
+<div class="main-container">
+  <ul class="score-list">
+    <li class="header">
+      <div>
+        <span>Number</span>
+      </div>
+      <div>
+        <span>Name</span>
+      </div>
+      <div>
+        <span>Score</span>
+      </div>
+      <div>
+        <span>Time</span>
+      </div>
+      <div>
+        <span>Size</span>
+      </div>
+    </li>
+    <li *ngFor="let item of results; index as i">
+      <div>
+        <span>{{ i + 1 }}</span>
+      </div>
+      <div>
+        <span>{{ item.name }}</span>
+      </div>
+      <div>
+        <span>{{ item.score }}</span>
+      </div>
+      <div>
+        <span>Time</span>
+      </div>
+      <div>
+        <span>{{ item.size.width }}x{{ item.size.height }}</span>
+      </div>
+    </li>
+  </ul>
+</div>

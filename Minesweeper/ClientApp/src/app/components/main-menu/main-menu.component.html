@@ -1,0 +1,32 @@
+<header>
+  <h1>{{ title }}</h1>
+</header>
+
+<div>
+  <div class="main-menu">
+    <div class="game-opt">
+      <a routerLink="/game"
+         [queryParams]="{'width':10, 'height': 10, 'mines': 20}">
+        <cell-btn>10 × 10</cell-btn>
+      </a>
+      <a routerLink="/game"
+         [queryParams]="{'width':50, 'height': 25, 'mines': 50}">
+        <cell-btn>50 × 25</cell-btn>
+      </a>
+      <a routerLink="/game"
+         [queryParams]="{'width':100, 'height': 100, 'mines': 100}">
+        <cell-btn>100 × 100</cell-btn>
+      </a>
+      <a routerLink="/game"
+         [queryParams]="{'width':200, 'height': 100, 'mines': 100}">
+        <cell-btn>200 × 100</cell-btn>
+      </a>
+    </div>
+    <a (click)="onCustomGameBtnClick()">
+      <cell-btn>Custom</cell-btn>
+    </a>
+    <a routerLink="/score">
+      <cell-btn>Best results</cell-btn>
+    </a>
+  </div>
+</div>

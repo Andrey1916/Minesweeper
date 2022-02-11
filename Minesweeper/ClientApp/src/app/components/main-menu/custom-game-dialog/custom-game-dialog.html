@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Custom game</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Width</mat-label>
+    <input matInput [(ngModel)]="config.width" type="number" placeholder="Ex. 3" [formControl]="widthControl" min="3">
+    <mat-error *ngIf="widthControl.invalid">Min width: 3</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Height</mat-label>
+    <input matInput [(ngModel)]="config.height" type="number" placeholder="Ex. 3" [formControl]="heightControl" min="3">
+    <mat-error *ngIf="heightControl.invalid">Min height: 3</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Mines</mat-label>
+    <input matInput [(ngModel)]="config.mines" type="number" placeholder="Ex. 3" [formControl]="minesCountControl" min="3">
+    <mat-error *ngIf="minesCountControl.invalid">Min value: 3</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="config" cdkFocusInitial>Ok</button>
+</div>

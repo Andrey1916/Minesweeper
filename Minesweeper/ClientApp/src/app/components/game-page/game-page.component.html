@@ -1,0 +1,24 @@
+<div *ngIf="successLoaded; then gameArea else errorMessage"></div>
+
+<ng-template #gameArea>
+  <header>
+    <div class="status-bar">
+      <span class="field">{{ width }} × {{ height }}</span>
+      <span class="field">{{ getFormattedTime() }}</span>
+      <span class="field">{{ getMinesLeft() }}</span>
+    </div>
+  </header>
+
+  <div class="main-container">
+    <game-area [width]="width"
+               [height]="height"
+               [mines]="mines"
+               (onMarkedAsMined)="onMarkedAsMined($event)"
+               (onGameOver)="onGameOver($event)"
+               (onGameStart)="onGameStart($event)"></game-area>
+  </div>
+</ng-template>
+
+<ng-template #errorMessage>
+  <h1>Some error</h1>
+</ng-template>

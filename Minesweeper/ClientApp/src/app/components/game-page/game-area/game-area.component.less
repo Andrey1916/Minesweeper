@@ -1,0 +1,83 @@
+@borderColor: #888;
+@cellBackgroundColor: #A9A9A9;
+
+.game-area-container{
+  display: flex;
+  justify-content: center;
+}
+
+.game-area {
+    display: grid;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    max-width: 100%;
+}
+
+.game-area > .cell {
+  border: 1px solid @borderColor;
+  border-radius: 2px;
+  background-color: @cellBackgroundColor;
+  display: block;
+  text-align: center;
+  line-height: 23px;
+  font-family: 'Open Sans', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  color: #333;
+  font-weight: bold;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+  cursor: pointer;
+
+  &:hover {
+    background-color: #CCC;
+  }
+}
+
+
+.checked {
+  background-color: #D3D3D3 !important;
+}
+
+.markAsMined {
+  background-color: rgb(110, 10, 30) !important;
+}
+
+.mined {
+  background-color: crimson !important;
+}
+
+.oneMine {
+  color: #333 !important;
+}
+
+.twoMines {
+  color: green !important;
+}
+
+.threeMines {
+  color: crimson !important;
+}
+
+.fourMines {
+  color: blue !important;
+}
+
+.fiveMines {
+  color: brown !important;
+}
+
+.sixMines {
+  color: cyan !important;
+}
+
+.sevenMines {
+  color: coral !important;
+}
+
+.eightMines {
+  color: black !important;
+}
