@@ -3,7 +3,7 @@
 namespace Minesweeper.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class WeatherForecastController : ControllerBase
 {
     private readonly ILogger<WeatherForecastController> _logger;
@@ -14,7 +14,7 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet]
-    public int Get()
+    public int Get(int a)
     {
         return 1;
     }
