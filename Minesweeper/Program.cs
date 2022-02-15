@@ -1,16 +1,28 @@
 using Microsoft.EntityFrameworkCore;
 using Minesweeper.DataAccess;
+using Minesweeper.DataAccess.Repositories;
+using Minesweeper.Services.Services;
+using Entities = Minesweeper.DataAccess.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 {
-    builder.Services.AddControllersWithViews();
+    var services = builder.Services;
+    services.AddControllersWithViews();
 
     string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-    builder.Services.AddDbContext<DataContext>(
-        options => options.UseSqlServer(connection)
+
+    services.AddDbContext<DataContext>(
+        options => options.UseSqlite(
+            connection,
+            opt => opt.MigrationsAssembly("Minesweeper.DataAccess")
+            )
     );
+    services.AddScoped<DbContext, DataContext>();
+
+    services.AddScoped<IRepository<Entities.GameResult, Guid>, GameResultRepositories>();
+    services.AddScoped<IGameResultService, GameResultService>();
 }
 
 var app = builder.Build();
@@ -30,4 +42,5 @@ var app = builder.Build();
     app.MapControllers();
     app.MapFallbackToFile("index.html");
 }
+
 app.Run();

@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper", "Minesweeper\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper.DataAccess", "Minesweeper.DataAccess\Minesweeper.DataAccess.csproj", "{428B3F90-8692-413D-9B8D-5D6FE560C7A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper.Services", "Minesweeper.Services\Minesweeper.Services.csproj", "{CF5C643E-4AEB-4603-A64E-5E647272A300}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{428B3F90-8692-413D-9B8D-5D6FE560C7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{428B3F90-8692-413D-9B8D-5D6FE560C7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{428B3F90-8692-413D-9B8D-5D6FE560C7A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5C643E-4AEB-4603-A64E-5E647272A300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5C643E-4AEB-4603-A64E-5E647272A300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5C643E-4AEB-4603-A64E-5E647272A300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5C643E-4AEB-4603-A64E-5E647272A300}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

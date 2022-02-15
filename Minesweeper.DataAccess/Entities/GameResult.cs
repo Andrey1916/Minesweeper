@@ -6,7 +6,7 @@ namespace Minesweeper.DataAccess.Entities;
 /// <summary>
 /// Game results
 /// </summary>
-public record Score
+public record GameResult : IEntity<Guid>
 {
     public Guid Id { get; set; }
     public string Name { get; set; }
@@ -14,13 +14,15 @@ public record Score
     /// Time in seconds
     /// </summary>
     public long Time { get; set; }
+    public int Score { get; set; }
     public uint AreaWidth { get; set; }
     public uint AreaHeight { get; set; }
+    public uint Mines { get; set; }
 }
 
-public class ScoreConfiguration: IEntityTypeConfiguration<Score>
+public class GameResultConfiguration : IEntityTypeConfiguration<GameResult>
 {
-    public void Configure(EntityTypeBuilder<Score> builder)
+    public void Configure(EntityTypeBuilder<GameResult> builder)
     {
         builder.HasKey(c => c.Id);
 
@@ -36,6 +38,9 @@ public class ScoreConfiguration: IEntityTypeConfiguration<Score>
                .IsRequired();
 
         builder.Property(p => p.AreaHeight)
+               .IsRequired();
+
+        builder.Property(p => p.Mines)
                .IsRequired();
     }
 }
