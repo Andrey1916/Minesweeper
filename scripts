@@ -1,0 +1,2 @@
+dotnet ef --startup-project ./Minesweeper/Minesweeper.csproj --project ./Minesweeper.DataAccess/Minesweeper.DataAccess.csproj database update
+dotnet ef --startup-project ./Minesweeper/Minesweeper.csproj --project ./Minesweeper.DataAccess/Minesweeper.DataAccess.csproj migrations add AddScoreField
