@@ -14,6 +14,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
 WORKDIR /src
 COPY ["Minesweeper/Minesweeper.csproj", "Minesweeper/"]
 RUN dotnet restore "Minesweeper/Minesweeper.csproj"
+
 COPY . .
 WORKDIR "/src/Minesweeper"
 RUN dotnet build "Minesweeper.csproj" -c Release -o /app/build
