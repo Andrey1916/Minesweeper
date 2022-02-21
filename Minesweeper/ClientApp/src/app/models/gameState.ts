@@ -5,7 +5,6 @@ export class GameState{
     public mines: number,
     public startedAt: number,
     public endedAt:number,
-    public isWin: Boolean,
-    public name: string|null = null)
+    public isWin: Boolean)
   {}
 }
