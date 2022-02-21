@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GameState } from '../../../models/gameState';
-import { FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'end-game-dialog',
@@ -21,12 +21,6 @@ export class EndGameDialog {
   }
 
   public onOkClick(): void {
-    if (this.data.isWin){
-      if (!this.playerNameControl.invalid){
-        this.dialogRef.close();
-      }
-    } else {
-      this.dialogRef.close();
-    }
+    this.dialogRef.close();
   }
 }

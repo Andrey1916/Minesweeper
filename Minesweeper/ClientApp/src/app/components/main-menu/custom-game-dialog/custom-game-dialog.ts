@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 
 /** @title Form field theming */
 @Component({
@@ -20,14 +20,14 @@ export class CustomGameDialog{
 
   constructor(
     public dialogRef: MatDialogRef<CustomGameDialog>
-  ) {}
+  ) { }
 
   onCancelClick(): void {
     this.dialogRef.close();
   }
 }
 
-export interface CustomGameConfig{
+export interface CustomGameConfig {
   width: number;
   height: number;
   mines: number;
