@@ -1,27 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { GameResultService } from '../../services/game-result.service';
 
 @Component({
   selector: 'best-results-page',
   templateUrl: './best-results-page.component.html',
-  styleUrls: ['./best-results-page.component.less']
+  styleUrls: ['./best-results-page.component.less'],
+  providers: [ GameResultService ]
 })
-export class BestResultPageComponent {
+export class BestResultPageComponent implements OnInit{
 
-  results: Result[] = [
-    { name: '545', score: 1, time: 0, size: { width: 0, height: 0}},
-    new Result(),
-    new Result(),
-    new Result(),
-    new Result(),
-    new Result(),
-    new Result(),
-    new Result()
-  ];
+  successLoaded: boolean = true;
+  results: Result[] = [];
+
+  constructor(private gameResultService: GameResultService)
+  { }
+
+  ngOnInit(): void {
+    this.gameResultService.getTopResults(20)
+      .subscribe({
+          next: (data: any) => {
+            data.forEach((item: any) => {
+              this.results.push(
+                new Result(
+                  item.name,
+                  item.time,
+                  item.score,
+                  item.mines,
+                  {
+                    width: item.areaWidth,
+                    height: item.areaHeight
+                  }
+                )
+              );
+            });
+          },
+          error: (error: any) => {
+            this.successLoaded = false;
+            console.error(error)
+          }
+        });
+  }
 }
 
-class Result{
-  name: string = '';
-  time: number = 0;
-  score: number = 0;
-  size: { width: number, height: number } = { width: 0, height: 0 };
+class Result {
+  constructor(
+    public name: string,
+    public time: number,
+    public score: number,
+    public mines: number,
+    public size: { width: number, height: number }
+  )
+  {}
 }

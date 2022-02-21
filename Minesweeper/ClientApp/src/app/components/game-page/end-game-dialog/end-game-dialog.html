@@ -1,11 +1,23 @@
+<div *ngIf="data.isWin; then winDialog else lossDialog"></div>
+
+<ng-template #winDialog>
 <h1 mat-dialog-title>You Win!</h1>
 <div mat-dialog-content>
   <p>Your score: 56414</p>
   <mat-form-field appearance="fill">
     <mat-label>Your name</mat-label>
-    <input matInput [(ngModel)]="data.name">
+    <input matInput [(ngModel)]="playerName" placeholder="Name" [formControl]="playerNameControl">
+    <mat-error *ngIf="playerNameControl.invalid">Field can not be empty</mat-error>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial>Ok</button>
+  <button mat-button [disabled]="playerNameControl.invalid" [mat-dialog-close]="playerName" cdkFocusInitial>Ok</button>
 </div>
+</ng-template>
+
+<ng-template #lossDialog>
+  <h1 mat-dialog-title>You Loss!</h1>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onOkClick()" cdkFocusInitial>Ok</button>
+  </div>
+</ng-template>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
 import { CustomGameDialog } from './custom-game-dialog/custom-game-dialog';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -21,9 +21,11 @@ export class MainMenuComponent {
       width: '300px',
       data: null,
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate(['/game'], { queryParams: result });
+      if (result !== undefined) {
+        this.router.navigate(['/game'], { queryParams: result });
+      }
       });
   }
 }

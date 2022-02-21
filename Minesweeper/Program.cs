@@ -39,6 +39,14 @@ var app = builder.Build();
     app.UseStaticFiles();
     app.UseRouting();
 
+#if DEBUG
+    app.UseCors(
+        b => b.AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowAnyOrigin()
+        );
+#endif
+
     app.MapControllers();
     app.MapFallbackToFile("index.html");
 }

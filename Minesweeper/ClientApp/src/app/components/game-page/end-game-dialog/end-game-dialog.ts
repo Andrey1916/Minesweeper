@@ -1,13 +1,26 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GameState } from '../../../models/gameState';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'end-game-dialog',
   templateUrl: 'end-game-dialog.html',
 })
 export class EndGameDialog {
+
+  playerName: string = '';
+
+  playerNameControl = new FormControl(this.playerName, Validators.required);
+
   constructor(
+    public dialogRef: MatDialogRef<GameState>,
     @Inject(MAT_DIALOG_DATA) public data: GameState,
-  ) {}
+  ) {
+    dialogRef.disableClose = data.isWin ? true : false;
+  }
+
+  public onOkClick(): void {
+    this.dialogRef.close();
+  }
 }

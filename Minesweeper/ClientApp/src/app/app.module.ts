@@ -19,6 +19,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { GameResultService } from './services/game-result.service'
+
+import { ToastrModule } from 'ngx-toastr';
+
+enum ToasterPosition {
+  topRight = 'toast-top-right',
+  topLeft = 'toast-top-left',
+  bottomRight = 'toast-bottom-right',
+  bottomLeft= 'toast-bottom-left',
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +50,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatNativeDateModule,
     MaterialExampleModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot({
+      positionClass: ToasterPosition.bottomRight
+    }),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ GameResultService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
