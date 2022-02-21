@@ -6,8 +6,8 @@ export class GameResultService {
 
   constructor(private http: HttpClient){}
 
-  getTopResults(skip: number, take: number){
-    return this.http.get(`https://localhost:7176/api/GameResult?skip=${ skip }&take=${ take }`);
+  getTopResults(take: number){
+    return this.http.get(`https://localhost:7176/api/GameResult?skip=0&take=${ take }`);
   }
 
   addNewResult(result: NewResult){
