@@ -21,7 +21,7 @@ export class MainMenuComponent {
       width: '300px',
       data: null,
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate(['/game'], { queryParams: result });
       });

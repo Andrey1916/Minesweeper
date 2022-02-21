@@ -6,7 +6,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 @Component({
   selector: 'custom-game-dialog',
   templateUrl: 'custom-game-dialog.html',
-  //styleUrls: ['custom-game-dialog.less'],
 })
 export class CustomGameDialog{
   config: CustomGameConfig = {

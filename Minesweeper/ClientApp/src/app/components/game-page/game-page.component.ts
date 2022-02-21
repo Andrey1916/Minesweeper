@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GameState } from '../../models/gameState';
 import { MatDialog } from '@angular/material/dialog';
 import { EndGameDialog } from './end-game-dialog/end-game-dialog';
+import { GameResultService, NewResult } from 'src/app/services/game-result.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'game-page',
@@ -23,6 +25,8 @@ export class GamePageComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private gameResultService: GameResultService,
+    private toastr: ToastrService,
     public dialog: MatDialog){
     route.queryParams.subscribe(
       (queryParam: any) => {
@@ -56,12 +60,31 @@ export class GamePageComponent {
       EndGameDialog,
       {
         width: '250px',
-        data: state,
+        data: state
       });
 
-    dialogRef.afterClosed().subscribe(result => {
-        state.name = result;
+    dialogRef.afterClosed().subscribe(playerName => {
+      if (!state.isWin){
         this.router.navigate(['/']);
+        return;
+      }
+
+      let result: NewResult = {
+        name:       playerName,
+        time:       state.endedAt - state.startedAt,
+        mines:      state.mines,
+        areaWidth:  state.width,
+        areaHeight: state.height
+      };
+
+      this.gameResultService.addNewResult(result)
+        .subscribe({
+            error: (error: any) => {
+              console.log(error);
+              this.toastr.error('Error', 'Some error while send data.\n\n' + error);
+            }
+          });
+          this.router.navigate(['/']);
       });
   }
 
